@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1825838, g: 0.22829619, b: 0.30718488, a: 1}
+  m_IndirectSpecularColor: {r: 0.1825836, g: 0.22829603, b: 0.30718416, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -697,10 +697,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2269186125842537964, guid: 2346a994b656a5446b7f924b58697589,
         type: 3}
+      propertyPath: testing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2269186125842537964, guid: 2346a994b656a5446b7f924b58697589,
+        type: 3}
       propertyPath: tomatoPrefab
       value: 
       objectReference: {fileID: 1663968896543861270, guid: 71a50b9b37259c446b00b96bb3f7666d,
         type: 3}
+    - target: {fileID: 2269186125842537964, guid: 2346a994b656a5446b7f924b58697589,
+        type: 3}
+      propertyPath: secondClearCounter
+      value: 
+      objectReference: {fileID: 1425165437}
     - target: {fileID: 2754949078413024437, guid: 2346a994b656a5446b7f924b58697589,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -947,6 +957,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c5dda3c7cd3cf742afcade5419faeab, type: 3}
+--- !u!114 &1425165437 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2269186125842537964, guid: 2346a994b656a5446b7f924b58697589,
+    type: 3}
+  m_PrefabInstance: {fileID: 420274137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2eb47fcfd8c45d42a2eb47658d93d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1710613366
 GameObject:
   m_ObjectHideFlags: 0
