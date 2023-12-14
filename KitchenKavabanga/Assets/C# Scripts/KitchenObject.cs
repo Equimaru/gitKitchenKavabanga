@@ -6,7 +6,7 @@ public class KitchenObject : MonoBehaviour
 {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
 
-    private ClearCounter clearCounter;
+    private IKitchenObjectParent kitchenObjectParent;
 
 
     public KitchenObjectSO GetKitchenObjectSO()
@@ -15,29 +15,30 @@ public class KitchenObject : MonoBehaviour
     }
 
     //After triggering function to clear parent for object it check if there is one
-    //public void SetClearCounter(ClearCounter clearCounter) 
-    //{
-        //if (clearCounter != null)
-        //{
+    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) 
+    {
+        //Whole problem was missing "this."
+        if (this.kitchenObjectParent != null)
+        {
             //If there is one we clear parent
-            //this.clearCounter.ClearKitchenObject();
-        //}
+            this.kitchenObjectParent.ClearKitchenObject();
+        }
             //And set new one after
-        //this.clearCounter = clearCounter;
+        this.kitchenObjectParent = kitchenObjectParent;
 
-        //if (clearCounter.HasKitchenObject())
-        //{
-            //Debug.LogError("Counter already has KitchenObject!!");
-        //}
+        if (kitchenObjectParent.HasKitchenObject())
+        {
+            Debug.LogError("Counter already has KitchenObject!!");
+        }
 
-        //clearCounter.SetKitchenObject(this);
+        kitchenObjectParent.SetKitchenObject(this);
 
-        //transform.parent = clearCounter.GetKitchenObjectFollowTransform();
-        //transform.localPosition = Vector3.zero;
-    //}
+        transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
+        transform.localPosition = Vector3.zero;
+    }
     
-    //public ClearCounter GetClearCounter() 
-    //{ 
-        //return clearCounter; 
-    //}
+    public IKitchenObjectParent GetKitchenObjectParent() 
+    { 
+        return kitchenObjectParent; 
+    }
 }

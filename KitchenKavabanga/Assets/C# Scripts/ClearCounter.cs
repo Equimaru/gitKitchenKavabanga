@@ -2,49 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClearCounter : MonoBehaviour
+public class ClearCounter : MonoBehaviour, IKitchenObjectParent
 {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     [SerializeField] private Transform counterTopPoint;
-    [SerializeField] private ClearCounter secondClearCounter;
-    [SerializeField] private bool testing;
 
     private KitchenObject kitchenObject;
 
-    private void Update()
-    {
-        if (testing && Input.GetKeyDown(KeyCode.T))
-        {
-            if (kitchenObject != null)
-            {
-                kitchenObject.SetClearCounter(secondClearCounter);
-                //Could throw no referense exeption in case we set new counter for object and clear field upper
-                Debug.Log(kitchenObject.GetClearCounter());
-            }
-        }
-    }
+   
 
 
-    public void Interact()
+    public void Interact(Player player)
     {
 
         //If there is no spawned KitchenObject we spawn one and assign it
         if (kitchenObject == null)
         {
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab, counterTopPoint);
-            //kitchenObjectTransform.GetComponent<KitchenObject>().SetClearCounter(this);
-            //No longer need things below >>
-            kitchenObjectTransform.localPosition = Vector3.zero;
-
-            kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
-            kitchenObject.SetClearCounter(this);
+            kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(this);
+            
         }
         else
         {
-            Debug.Log(kitchenObject.GetClearCounter());
+            //Passing object to the player
+            kitchenObject.SetKitchenObjectParent(player);
         }
     }
 
+    
     public Transform GetKitchenObjectFollowTransform()
     {
         return counterTopPoint;
@@ -65,9 +50,10 @@ public class ClearCounter : MonoBehaviour
         kitchenObject = null; 
     }
 
-    //Is there anything on top of the counter?
+    ////Is there anything on top of the counter?
     public bool HasKitchenObject()
     {
         return kitchenObject != null;
     }
+    
 }
