@@ -103,7 +103,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         {
             SetSelectedCounter(null);
         }
-        //Debug.Log(selectedCounter);
     }
     private void HandleMovement()
     {
@@ -156,7 +155,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
-
     }
 
     private void SetSelectedCounter(BaseCounter selectedCounter)
